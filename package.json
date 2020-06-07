@@ -1,0 +1,41 @@
+{
+  "name": "webpacktest",
+  "version": "1.0.0",
+  "description": "test webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "checkWebpack": "webpack -v",
+    "build": "webpack",
+    "server": "webpack-dev-server --open"
+  },
+  "author": "Btrya",
+  "license": "ISC",
+  "mode": "development",
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.5.3",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.11.3",
+    "less-loader": "^4.1.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^2.0.6",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "sass-loader": "^7.0.2",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "dependencies": {
+    "html-withimg-loader": "^0.1.16"
+  }
+}

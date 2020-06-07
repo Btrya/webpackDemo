@@ -1,0 +1,15 @@
+body{
+  background-color: antiquewhite;
+  color: chocolate;
+}
+#testImg {
+  background-image: url(../images/xixi.jpg);
+  height: 300px;
+  width: 300px;
+  transform: rotate(45deg);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, .25);
+}
+#aaa{
+  background-color: antiquewhite;
+  color: chocolate;
+}
