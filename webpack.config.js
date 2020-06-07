@@ -4,15 +4,25 @@ const UglifyPlugin = require('uglifyjs-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const PurifyCSSPlugin = require("purifycss-webpack")
+const entry = require('./webpack_config/entry_webpack')
 
-let website = {
-    publicPath: "http://localhost:9527/"
+let website
+if (process.env.type == 'build') {
+    website = {
+        publicPath: "http://test.com:1717/"
+    }
+} else {
+    website = {
+        publicPath: "http://localhost:9527/"
+    }
 }
 
+
+
+
 module.exports = {
-    entry: {
-        bundle: './src/entry.js',
-    },
+    devtool: 'source-map',
+    entry: entry.path,
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
