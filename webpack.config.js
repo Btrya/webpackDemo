@@ -5,6 +5,8 @@ const HtmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const PurifyCSSPlugin = require("purifycss-webpack")
 const entry = require('./webpack_config/entry_webpack')
+const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 let website
 if (process.env.type == 'build') {
@@ -16,9 +18,6 @@ if (process.env.type == 'build') {
         publicPath: "http://localhost:9527/"
     }
 }
-
-
-
 
 module.exports = {
     devtool: 'source-map',
@@ -102,6 +101,18 @@ module.exports = {
         ]
     },
     plugins: [
+        new CopyWebpackPlugin([{
+            from: __dirname + '/src/public',
+            to: './public'
+        }]),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['jquery', 'vue'],
+            filename: "assets/js/[name].js",
+            minChunks: 2
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery"
+        }),
         // new UglifyPlugin(),
         new HtmlPlugin({
             minify: {
@@ -113,12 +124,18 @@ module.exports = {
         new ExtractTextPlugin("css/style.css"),
         new PurifyCSSPlugin({
             paths: glob.sync(path.join(__dirname, 'src/*.html'))
-        })
+        }),
+        new webpack.BannerPlugin('BINCAI学习')
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         host: 'localhost',
         compress: true,
         port: 9527
+    },
+    watchOptions: {
+        poll: 1000,  // 多久检测更新一次
+        aggregateTimeout: 500, // 防止重复保存出错，半秒钟内按ctrl+s只触发一次,
+        ignored: /node_modules/, // 不监测哪些文件夹
     }
 }
