@@ -1,12 +1,12 @@
 const path = require('path')
 const glob = require('glob')
-const UglifyPlugin = require('uglifyjs-webpack-plugin')
-const HtmlPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const PurifyCSSPlugin = require("purifycss-webpack")
+const UglifyPlugin = require('uglifyjs-webpack-plugin') // 压缩js文件，减少js文件大小
+const HtmlPlugin = require('html-webpack-plugin')  // 把html中的双引号单引号去除
+const ExtractTextPlugin = require('extract-text-webpack-plugin')  // 抽取css样式，防止将样式打包在js中引起页面样式加载错落的现象
+const PurifyCSSPlugin = require("purifycss-webpack") // 清理无用的css，要添加在ExtractTextPlugin之后
 const entry = require('./webpack_config/entry_webpack')
 const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')  // 复制文件，比如放置到public目录中，可以直接访问
 
 let website
 if (process.env.type == 'build') {
